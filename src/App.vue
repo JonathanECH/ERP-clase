@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import { useRoute, RouterView } from 'vue-router';
+import { useTheme } from 'vuetify'
+
+const theme = useTheme()
 const route = useRoute();
 const drawer = ref(true) // Controla si el menú está abierto
 // Array con las opciones del menú
@@ -10,6 +13,12 @@ const menuItems = [
   { title: 'Facturación', icon: 'mdi-receipt', to: '/facturacion' },
   { title: 'Contabilidad', icon: 'mdi-calculator', to: '/contabilidad' }
 ]
+
+function toggleTheme(e) {
+  // passing target element will make it work for both clicks and keyboard interactions
+  theme.setTransitionOrigin(e.target)
+  theme.toggle()
+}
 </script>
 
 <template>
@@ -22,6 +31,8 @@ const menuItems = [
         ERP Contable - Microempresa
       </v-app-bar-title>
       <v-spacer />
+      <v-btn :icon="theme.global.current.value.dark ? 'mdi-weather-sunny' : 'mdi-weather-night'" variant="text"
+        class="mr-2" @click="toggleTheme" />
       <v-chip color="white" variant="outlined" class="mr-2">
         <v-icon start>mdi-school</v-icon>
         Universidad
