@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 import { useRoute, RouterView } from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
 const route = useRoute();
 const drawer = ref(true) // Controla si el menú está abierto
 // Array con las opciones del menú
@@ -23,7 +22,7 @@ const menuItems = [
         ERP Contable - Microempresa
       </v-app-bar-title>
       <v-spacer />
-      <v-chip color="white" variant="outlined">
+      <v-chip color="white" variant="outlined" class="mr-2">
         <v-icon start>mdi-school</v-icon>
         Universidad
       </v-chip>
